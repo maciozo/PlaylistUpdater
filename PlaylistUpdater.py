@@ -48,7 +48,7 @@ def main(cwd, sourceDirs, playlistDir, playlistName, extensions, recursiveScan, 
         currentFiles = set(currentFiles) # Removes duplicates
         currentFiles = list(currentFiles)
     except FileNotFoundError:
-        with open("%s/s" % (playlistDir, playlistName), "w", encoding = "utf-8") as m3u:
+        with open("%s/%s" % (playlistDir, playlistName), "w", encoding = "utf-8") as m3u:
             pass
     
     while (1):
@@ -102,6 +102,7 @@ def main(cwd, sourceDirs, playlistDir, playlistName, extensions, recursiveScan, 
             except PermissionError:
                 print("Permission error opening playlist file for writing")
         
+        time.sleep(120)
         
 def worker(threadID, extensions):
     directory = directoriesToScan.get()
